@@ -39,10 +39,10 @@ app.get("/addnewevent", async(req, res) => {
       }
 
       const num = req.query.totalwinners
-      const range = req.query.totaltickets
+      const range = req.query.numtickets
 
       while(chosenIndexes.length != num) {
-        const add = Math.floor(Math.random() * (range))
+        const add = Math.floor(Math.random() * (range - 1))
         if(!chosenIndexes.includes(add)) {
             chosenIndexes.push(add)
         }
@@ -50,21 +50,34 @@ app.get("/addnewevent", async(req, res) => {
 
     const newevent = new Event({
         name : req.query.name,
+        summary: req.query.summary,
         numTickets : req.query.numtickets,
         code : Math.abs(req.query.name.hashCode() + "" + Math.floor(Math.random() * (90) + 1)),
-        winnerIndexes: chosenIndexes
+        winnerIndexes: chosenIndexes,
+        winners: [
+            {
+                name: "Ashwin Mudaliar",
+            },
+            {
+                name: "Ved Rao",
+            },
+            {
+                name: "Arjun Singh",
+            },
+            {
+                name: "Jackie Chan",
+            },
+        ]
     })
 
     console.log(newevent)
 
     try {
         const event = await newevent.save()
-        res.send(
-            newevent
-        )
+        res.sendStatus(200)
     } catch (error) { 
         console.log(error)
-        res.send("some error occured")
+        res.sendStatus(500)
     }
 
 })
@@ -76,4 +89,8 @@ app.get("/events/:code", async (req, res) => {
     }
     res.render("show", {event: event})
     // res.send(event)
+})
+
+app.get("/scratch", (req, res) => {
+    res.render("scratch")
 })

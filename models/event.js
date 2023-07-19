@@ -6,6 +6,10 @@ const eventSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    summary: {
+        type: String,
+        required: true
+    },
     numTickets: {
         type: Number,
         required: true

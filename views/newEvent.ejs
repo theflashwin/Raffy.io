@@ -33,6 +33,18 @@
                                         class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
                                 </div>
 
+
+                                <div class="md:col-span-5">
+
+                                    <label for="message"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Event Summary</label>
+                                    <textarea id="summary" rows="4"
+                                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder=""></textarea>
+
+                                </div>
+
+
                                 <div class="md:col-span-3">
                                     <label for="address">Number of Total Tickets</label>
                                     <input type="text" name="total_tickets" id="total_tickets"
@@ -52,7 +64,8 @@
                                     <div class="inline-flex items-center">
                                         <input type="checkbox" name="billing_same" id="billing_same"
                                             class="form-checkbox" />
-                                        <label for="billing_same" class="ml-2">I consent to the terms and conditions</label>
+                                        <label for="billing_same" class="ml-2">I consent to the terms and
+                                            conditions</label>
                                     </div>
                                 </div>
 
@@ -86,7 +99,8 @@
 
                                 <div class="md:col-span-5 text-right">
                                     <div class="inline-flex items-end">
-                                        <button id="submitButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+                                        <button id="submitButton"
+                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
                                     </div>
                                 </div>
 
@@ -104,7 +118,7 @@
         </div>
     </div>
 
-    <script src="../helper.js"></script>
+    <script src="./js/helper.js"></script>
 
 </body>
 
