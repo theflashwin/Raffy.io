@@ -15,7 +15,7 @@ submitButton.onclick = () => {
         if(http.readyState == 4 && http.status == 200) {
             window.location = "/scratch/" + code + "?phonenumber=" + phoneNumber
         } else if(http.status == 500) {
-            window.location = "/error"
+            alert("This phone number has already been used! ONly one entry is allowed per phone number.")
         }
     }
 

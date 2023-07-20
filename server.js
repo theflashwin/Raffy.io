@@ -60,7 +60,7 @@ app.get("/addnewevent", async (req, res) => {
 
     try {
         const event = await newevent.save()
-        res.sendStatus(200)
+        res.send(newevent.code)
     } catch (error) {
         console.log(error)
         res.sendStatus(500)
@@ -70,27 +70,35 @@ app.get("/addnewevent", async (req, res) => {
 
 app.get("/events/:code", async (req, res) => {
     const event = await Event.findOne({ code: req.params.code })
+
     if (event == null) {
         res.render("notfound")
+    } else {
+        
+        let isFull = false
+
+        if (event.tickets.length >= event.numTickets) {
+            isFull = true
+        }
+        res.render("show", { event: event, isFull: isFull })
     }
-    res.render("show", { event: event })
     // res.send(event)
 })
 
 app.get("/scratch/:code", async (req, res) => {
 
-    const event = await Event.findOne({code: req.params.code})
+    const event = await Event.findOne({ code: req.params.code })
     const phoneNumber = req.query.phonenumber
 
     let isWinner = false
 
     event.winners.forEach((winner) => {
-        if(winner.phoneNumber == phoneNumber) {
+        if (winner.phoneNumber == phoneNumber) {
             isWinner = true
         }
     })
 
-    res.render("scratch", {isWinner: isWinner, event: event})
+    res.render("scratch", { isWinner: isWinner, event: event })
 })
 
 app.get("/info/:code", async (req, res) => {
@@ -112,7 +120,7 @@ app.get("/drawticket", async (req, res) => {
     const event = await Event.findOne({ code: eventCode })
 
     console.log(event)
- 
+
     const tickets = event.tickets
 
     // check number does not exceed set number of tickets
@@ -128,7 +136,7 @@ app.get("/drawticket", async (req, res) => {
         if (ticket.phoneNumber == phoneNumber) {
             console.log("bitch")
             status = 500
-        } 
+        }
     })
 
     // check if this draw is a winner, if so add to winner array
@@ -139,7 +147,7 @@ app.get("/drawticket", async (req, res) => {
         })
     }
 
-    if(status != 500) {
+    if (status != 500) {
         tickets.push({
             name: name,
             phoneNumber: phoneNumber,

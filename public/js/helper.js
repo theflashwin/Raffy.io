@@ -15,7 +15,8 @@ newEventButton.onclick = async () => {
 
     http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200) {
-            window.location = "/"
+            console.log(http.responseText)
+            window.location = "/events/" + http.responseText
         }
     }
 
