@@ -19,6 +19,7 @@ const eventSchema = mongoose.Schema({
         required: false,
     },
     winnerIndexes: [],
+    tickets: [],
     winners: []
 })
 

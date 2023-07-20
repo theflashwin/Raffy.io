@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles/scratch.css">
+  <link rel="stylesheet" href="../styles/scratch.css">
 
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
@@ -11,13 +11,18 @@
     
    <div class="container">
         <div class="base">
-            <h4>You Won!</h4>
-            <h3>Show this ticket to claim your prize</h3>
+            <% if (isWinner) { %>
+              <h4>You Won!</h4>
+              <h3>Show this ticket to claim your prize</h3>
+            <% } else { %>
+              <h4>You Lost</h4>
+            <h3>Better luck next time!</h3>
+            <% } %>
         </div>
    </div>
-   <canvas id="scratch" width="200" height="200"></canvas>
+   <canvas id="scratch" width="400" height="400"></canvas>
 
-   <script src="./js/scratch.js"></script>
+   <script src="../js/scratch.js"></script>
 
 </body>
 </html>
