@@ -1,6 +1,10 @@
 let canvas = document.getElementById("scratch")
 let context = canvas.getContext("2d")
 
+document.getElementById('back_button').onclick = () => {
+    history.back()
+}
+
 const init = () => {
     let gradientColor = context.createLinearGradient(0, 0, 135, 135)
     gradientColor.addColorStop(0, "#8360c3")
