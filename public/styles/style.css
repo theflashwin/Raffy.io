@@ -708,9 +708,6 @@ video {
 .overflow-y-hidden {
   overflow-y: hidden;
 }
-.overscroll-none {
-  overscroll-behavior: none;
-}
 .rounded {
   border-radius: 0.25rem;
 }
@@ -888,6 +885,9 @@ video {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+.pb-10 {
+  padding-bottom: 2.5rem;
 }
 .pb-12 {
   padding-bottom: 3rem;
